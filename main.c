@@ -1,13 +1,19 @@
-unsigned char 
+typedef unsigned char uint8;
 
 void main(void)
 {
-	unsigned char a, b, c;
+	uint8 a;
 	
 	a = 0x10;
-	b = 0x04;
 	
-	c = 
+	bit_set(&a, 2, 4);
 }
 
-unsigned char 
+void bit_set(uint8 *value, uint8 set_pos, uint8 reset_pos)
+{
+	if ((value != NULL) && (set_pos < 8) && (reset_pos < 8))
+	{
+		*value |= (1 << set_pos);
+		*value &= ~(1 << reset_pos);
+	}
+}
